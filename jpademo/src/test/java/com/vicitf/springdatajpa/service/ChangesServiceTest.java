@@ -37,10 +37,10 @@ public class ChangesServiceTest {
 	 * 修改动作
 	 */
 	@Test
-	public void newChangesTest37() {
+	public void newChangesTestN() {
 		Changes changes = new Changes();
-		changes.setChangeNums(37);
-		changes.setChangeAction("new approvel way");
+		changes.setChangeNums(43);
+		changes.setChangeAction("record");
 		changes.setChangeTime(new Date());
 		List<TableChanges> list = cs.newChange(changes);
 		for (TableChanges tableChanges : list) {
