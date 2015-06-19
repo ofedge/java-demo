@@ -23,4 +23,4 @@ public FilterRegistrationBean registration() {
 </filter-mapping>
 ```
 
-之后再传递参数时候添加一个{"_method":"put"}, 或者在表单添加隐藏域: `&lt;input type="hidden" name="\_method" value="put" /&gt;`
+之后再传递参数时候添加一个{"_method":"put"}, 或者在表单添加隐藏域: `<input type="hidden" name="_method" value="put" />`
