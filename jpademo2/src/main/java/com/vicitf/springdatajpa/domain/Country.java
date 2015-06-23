@@ -20,6 +20,21 @@ public class Country {
 	private String code;
 	
 	private Collection<Person> persons;
+	
+	public Country() {}
+
+	public Country(String name, String region, String code) {
+		this.name = name;
+		this.region = region;
+		this.code = code;
+	}
+
+	public Country(Long id, String name, String region, String code) {
+		this.id = id;
+		this.name = name;
+		this.region = region;
+		this.code = code;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -70,7 +85,8 @@ public class Country {
 
 	@Override
 	public String toString() {
-		return "Country [id=" + id + ", name=" + name + ", region=" + region + ", code=" + code + "]";
+		return "Country [id=" + id + ", name=" + name + ", region=" + region
+				+ ", code=" + code  + "]";
 	}
 
 }

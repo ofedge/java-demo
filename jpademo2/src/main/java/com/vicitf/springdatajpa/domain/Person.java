@@ -86,4 +86,11 @@ public class Person {
 		this.country = country;
 	}
 
+	@Override
+	public String toString() {
+		return "Person [id=" + id + ", name=" + name + ", email=" + email
+				+ ", age=" + age + ", gender=" + gender + ", country="
+				+ country + "]";
+	}
+
 }
