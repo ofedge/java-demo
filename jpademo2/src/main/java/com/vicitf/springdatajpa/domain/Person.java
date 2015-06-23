@@ -3,6 +3,7 @@ package com.vicitf.springdatajpa.domain;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -76,7 +77,7 @@ public class Person {
 		this.gender = gender;
 	}
 
-	@ManyToOne(cascade = CascadeType.PERSIST, targetEntity = Country.class)
+	@ManyToOne(cascade = CascadeType.PERSIST, targetEntity = Country.class, fetch = FetchType.EAGER)
 	@JoinColumn(name = "country_id")
 	public Country getCountry() {
 		return country;

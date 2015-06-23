@@ -80,4 +80,12 @@ public class PersonRepositoryTest {
 		}
 	}
 	
+	@Test
+	public void findAllTest() {
+		List<Person> list = pr.findAll();
+		for (Person person : list) {
+			System.out.println(person);
+		}
+	}
+	
 }
