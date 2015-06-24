@@ -8,17 +8,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vicitf.bootcss.domain.Person;
-import com.vicitf.bootcss.service.PersonService;
+import com.vicitf.bootcss.domain.Demo;
+import com.vicitf.bootcss.service.DemoService;
 
 @RestController
-public class PersonController {
+public class DemoController {
 	@Autowired
-	private PersonService ps;
+	private DemoService ds;
 	
-	@RequestMapping(value = "/persons", method = RequestMethod.GET)
+	@RequestMapping(value = "/demos", method = RequestMethod.GET)
 	@ResponseBody
-	public Page<Person> findAllPersons(int page, int size) {
-		return ps.findAll(new PageRequest(page, size));
+	public Page<Demo> findAll(int page, int size) {
+		return ds.findAll(new PageRequest(page, size));
 	}
 }

@@ -5,15 +5,15 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.vicitf.bootcss.domain.Person;
-import com.vicitf.bootcss.repository.PersonRepository;
+import com.vicitf.bootcss.domain.Demo;
+import com.vicitf.bootcss.repository.DemoRepository;
 
 @Service
-public class PersonService {
+public class DemoService {
 	@Autowired
-	private PersonRepository pr;
+	private DemoRepository dr;
 	
-	public Page<Person> findAll(Pageable pageable) {
-		return pr.findAll(pageable);
+	public Page<Demo> findAll(Pageable pageable) {
+		return dr.findAll(pageable);
 	}
 }

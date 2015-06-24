@@ -19,7 +19,7 @@ $(function(){
 		if (size == undefined)
 			size = 10;
 		$.ajax({
-			url: '/persons',
+			url: '/demos',
 			type: 'get',
 			data: {'page': page, 'size': size},
 			dataType: 'json',
@@ -32,15 +32,11 @@ $(function(){
 					tbody += '<tr><td>';
 					tbody += content[i].id;
 					tbody += '</td><td>';
-					tbody += content[i].name;
+					tbody += content[i].text;
 					tbody += '</td><td>';
-					tbody += content[i].email;
+					tbody += content[i].number;
 					tbody += '</td><td>';
-					tbody += content[i].age;
-					tbody += '</td><td>';
-					tbody += content[i].gender;
-					tbody += '</td><td>';
-					tbody += content[i].countryId;
+					tbody += content[i].date;
 					tbody += '</td></tr>';
 				}
 				$('tbody').html(tbody);
@@ -71,11 +67,9 @@ $(function(){
       <thead>
         <tr>
           <th>id</th>
-          <th>name</th>
-          <th>email</th>
-          <th>age</th>
-          <th>gender</th>
-          <th>country id</th>
+          <th>text</th>
+          <th>number</th>
+          <th>date</th>
         </tr>
       </thead>
       <tbody></tbody>
