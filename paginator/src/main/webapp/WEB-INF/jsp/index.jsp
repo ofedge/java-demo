@@ -51,15 +51,15 @@ $(function(){
 		});
 	}
 	var options = {
-	    bootstrapMajorVersion: 3,
-	    currentPage: 1,
-	    totalPages: 10,
-	    pageUrl: function(type, page, current){
-            return "javascript:void(0);";
-        },
-        onPageClicked: function(e,originalEvent,type,page){
-        	loadPersons(page - 1);
-        }
+		bootstrapMajorVersion: 3,
+		currentPage: 1,
+		totalPages: 10,
+		pageUrl: function(type, page, current){
+			return "javascript:void(0);";
+		},
+		onPageClicked: function(e,originalEvent,type,page){
+			loadPersons(page - 1);
+		}
 	}
 	loadPersons();
 });
