@@ -41,7 +41,8 @@ public class DemoRepository {
 	}
 	
 	public void insertCustomer(Customer customer) {
-		template.insert(customer);
+		template.save(customer);
+//		template.insert(customer);
 	}
 	
 	public WriteResult removeByFirstName(String firstName) {
