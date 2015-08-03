@@ -9,3 +9,5 @@ restful: 一个简单的 spring mvc 的 restful 风格实现
 paginator: 一个用 Bootstrap Paginator 做的demo
 
 mongodb: spring-data-mongodb 的 demo
+
+mybatis-demo: mybatis 简单demo
