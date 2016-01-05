@@ -20,9 +20,9 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelUtil {
     
-	/**
-	 * 要读取的表格
-	 */
+    /**
+     * 要读取的表格
+     */
     public static final int SHEET_INDEX = 0;
     
     /**
@@ -34,8 +34,8 @@ public class ExcelUtil {
      * @throws IOException
      */
     @SuppressWarnings("resource")
-	public static List<List<Object>> getDataFromXls(InputStream is) throws FileNotFoundException, IOException {
-    	List<List<Object>> list = new ArrayList<List<Object>>();
+    public static List<List<Object>> getDataFromXls(InputStream is) throws FileNotFoundException, IOException {
+        List<List<Object>> list = new ArrayList<List<Object>>();
         HSSFWorkbook wb = new HSSFWorkbook(is); // 读取文件
         HSSFSheet sheet = wb.getSheetAt(SHEET_INDEX); // 表格
         int len = sheet.getLastRowNum();
@@ -44,35 +44,35 @@ public class ExcelUtil {
             List<Object> ol = new ArrayList<Object>();
             int cellLen = row.getLastCellNum();
             for (int j = 0; j <= cellLen; j++) {
-				HSSFCell cell = row.getCell(j); // 单元格
-				if (cell != null){
-					switch (cell.getCellType()) {
-					case HSSFCell.CELL_TYPE_BOOLEAN: // 布尔值
-						boolean value = cell.getBooleanCellValue();
-						ol.add(value);
-						break;
-					case HSSFCell.CELL_TYPE_NUMERIC: // 数字
-						if (HSSFDateUtil.isCellDateFormatted(cell)){ //日期
-							Date date = cell.getDateCellValue();
-							ol.add(date);
-						} else {
-							double dValue = cell.getNumericCellValue();
-							ol.add(formatDouble(dValue));
-						}
-						break;
-					case HSSFCell.CELL_TYPE_FORMULA: // 公式
-						String fValue = cell.getCellFormula();
-						ol.add(fValue);
-						break;
-					case HSSFCell.CELL_TYPE_STRING: // 文本
-						String sValue = cell.getRichStringCellValue().toString();
-						ol.add(sValue);
-						break;
-					default:
-						break;
-					}
-				}
-			}
+                HSSFCell cell = row.getCell(j); // 单元格
+                if (cell != null){
+                    switch (cell.getCellType()) {
+                    case HSSFCell.CELL_TYPE_BOOLEAN: // 布尔值
+                        boolean value = cell.getBooleanCellValue();
+                        ol.add(value);
+                        break;
+                    case HSSFCell.CELL_TYPE_NUMERIC: // 数字
+                        if (HSSFDateUtil.isCellDateFormatted(cell)){ //日期
+                            Date date = cell.getDateCellValue();
+                            ol.add(date);
+                        } else {
+                            double dValue = cell.getNumericCellValue();
+                            ol.add(formatDouble(dValue));
+                        }
+                        break;
+                    case HSSFCell.CELL_TYPE_FORMULA: // 公式
+                        String fValue = cell.getCellFormula();
+                        ol.add(fValue);
+                        break;
+                    case HSSFCell.CELL_TYPE_STRING: // 文本
+                        String sValue = cell.getRichStringCellValue().toString();
+                        ol.add(sValue);
+                        break;
+                    default:
+                        break;
+                    }
+                }
+            }
             list.add(ol);
         }
         return list;
@@ -86,7 +86,7 @@ public class ExcelUtil {
      * @throws IOException 
      */
     @SuppressWarnings("resource")
-	public static List<List<Object>> getDataFromXlsx(InputStream is) throws IOException {
+    public static List<List<Object>> getDataFromXlsx(InputStream is) throws IOException {
         List<List<Object>> list = new ArrayList<List<Object>>();
         XSSFWorkbook wb = new XSSFWorkbook(is); // 读取文件
         XSSFSheet sheet = wb.getSheetAt(SHEET_INDEX); //变革
@@ -96,35 +96,35 @@ public class ExcelUtil {
             List<Object> ol = new ArrayList<Object>();
             int rowLen = sheet.getLastRowNum();
             for (int j = 0; j < rowLen; j++) {
-            	XSSFCell cell = row.getCell(j); // 单元格
-            	if (cell != null) {
-            		switch (cell.getCellType()) {
-            		case XSSFCell.CELL_TYPE_BOOLEAN: // 布尔值
-            			boolean value = cell.getBooleanCellValue();
-            			ol.add(value);
-            			break;
-            		case XSSFCell.CELL_TYPE_NUMERIC: // 数字
-            			if (HSSFDateUtil.isCellDateFormatted(cell)){ //日期
-            				Date date = cell.getDateCellValue();
-            				ol.add(date);
-            			} else {
-            				double dValue = cell.getNumericCellValue();
-            				ol.add(formatDouble(dValue));
-            			}
-            			break;
-            		case XSSFCell.CELL_TYPE_FORMULA: // 公式
-            			String fValue = cell.getCellFormula();
-            			ol.add(fValue);
-            			break;
-            		case XSSFCell.CELL_TYPE_STRING: // 文本
-            			String sValue = cell.getRichStringCellValue().toString();
-            			ol.add(sValue);
-            			break;
-            		default:
-            			break;
-            		}
-            	}
-			}
+                XSSFCell cell = row.getCell(j); // 单元格
+                if (cell != null) {
+                    switch (cell.getCellType()) {
+                    case XSSFCell.CELL_TYPE_BOOLEAN: // 布尔值
+                        boolean value = cell.getBooleanCellValue();
+                        ol.add(value);
+                        break;
+                    case XSSFCell.CELL_TYPE_NUMERIC: // 数字
+                        if (HSSFDateUtil.isCellDateFormatted(cell)){ //日期
+                            Date date = cell.getDateCellValue();
+                            ol.add(date);
+                        } else {
+                            double dValue = cell.getNumericCellValue();
+                            ol.add(formatDouble(dValue));
+                        }
+                        break;
+                    case XSSFCell.CELL_TYPE_FORMULA: // 公式
+                        String fValue = cell.getCellFormula();
+                        ol.add(fValue);
+                        break;
+                    case XSSFCell.CELL_TYPE_STRING: // 文本
+                        String sValue = cell.getRichStringCellValue().toString();
+                        ol.add(sValue);
+                        break;
+                    default:
+                        break;
+                    }
+                }
+            }
             list.add(ol);
         }
         return list;
@@ -137,9 +137,9 @@ public class ExcelUtil {
      * @return
      */
     public static String getFileExt(String filename) {
-    	if (filename == null) {
-    		return "";
-    	}
+        if (filename == null) {
+            return "";
+        }
         return filename.indexOf(".") == -1 ? "" : filename.split("\\.")[filename.split("\\.").length - 1];
     }
     
