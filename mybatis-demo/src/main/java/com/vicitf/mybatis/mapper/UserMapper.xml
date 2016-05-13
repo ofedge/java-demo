@@ -6,16 +6,23 @@
         <result property="name" column="NAME"/>
         <result property="age" column="AGE"/>
     </resultMap>
-    <select id="getUser" parameterType="Long" resultType="User" resultMap="userResultMap">
-        <![CDATA[
-            SELECT * FROM T_USER T WHERE T.ID = #{id}
-        ]]>  
+    <select id="getUser" parameterType="Long" resultType="User">
+        select * from t_user t where t.id = #{id}
     </select>
     
-    <select id="getAllUser" resultType="com.vicitf.mybatis.domain.User" resultMap="userResultMap">
-        <![CDATA[
-            SELECT * FROM T_USER
-        ]]>      
-    </select>
+    <select id="getAllUser" resultType="User">
+        select * from t_user t
+    </select> 
     
+    <insert id="insertUser" parameterType="User">
+        insert into t_user(name, age) values (#{name}, #{age})
+    </insert>
+    
+    <update id="updateUser" parameterType="User">
+        update t_user t set t.name = #{name}, t.age = #{age} where t.id = #{id}
+    </update>
+    
+    <delete id="deleteUser" parameterType="Long">
+        delete from t_user where id = #{id}
+    </delete>
 </mapper>

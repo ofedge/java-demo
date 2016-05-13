@@ -1,21 +1,18 @@
-package com.vicitf.mybatis.mapper;
+package com.vicitf.mybatis.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
-
 import com.vicitf.mybatis.domain.User;
 
-@Repository
-public interface UserMapper {
+public interface UserService {
     
     User getUser(Long id);
 
     List<User> getAllUser();
 
     int insertUser(User user);
-
+    
     int updateUser(User user);
-
+    
     int deleteUser(Long id);
 }
