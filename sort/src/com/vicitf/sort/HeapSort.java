@@ -35,7 +35,7 @@ public class HeapSort {
      * @param lastIndex
      */
     public static void createMaxHeap(int[] data, int lastIndex) {
-        for (int i = (lastIndex - 1) >> 2; i >= 0; i--) {  // 从最后一个有叶子的节点开始
+        for (int i = (lastIndex - 1) >> 1; i >= 0; i--) {  // 从最后一个有叶子的节点开始
             // 保存当前正在判断的节点
             int k = i;
             while ((k << 1) + 1 <= lastIndex) {
