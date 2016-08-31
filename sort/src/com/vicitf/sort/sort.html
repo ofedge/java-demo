@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>sort</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+var arr = [4,3,6,9,7,1,2,4];
+
+/**
+ * 插入排序
+ */
+var insertSort = function(arr){
+    for (var i = 0; i < arr.length; i++){
+        var tmp =  arr[i];
+        var j;
+        for (j =  i - 1; j >= 0 && tmp < arr[j]; j--){
+            arr[j + 1] = arr[j]
+        }
+        arr[j + 1] = tmp;
+    }
+    return arr;
+}
+
+/**
+ * 堆排序
+ */
+var heapSort = function(arr, lastIndex){
+    if (lastIndex == 0)
+        return;
+    var lp = lastIndex;
+    for (var i = (lastIndex-1)>>1; i >= 0; i--){
+        var k = i;
+        while ((k << 1) + 1 <= lastIndex) {
+            var biggerIndex = (k << 1) + 1;
+            if (biggerIndex < lastIndex) {
+                if (arr[biggerIndex] < arr[biggerIndex + 1]){
+                    biggerIndex++;
+                }
+            }
+            if (arr[k] < arr[biggerIndex]){
+                arr[k] = arr[k] + arr[biggerIndex];
+                arr[biggerIndex] = arr[k] - arr[biggerIndex];
+                arr[k] = arr[k] - arr[biggerIndex];
+                break;
+            } else {
+                break;
+            }
+        }
+    }
+    arr[0] = arr[0] + arr[lp];
+    arr[lp] = arr[0] - arr[lp];
+    arr[0] = arr[0] - arr[lp];
+    heapSort(arr, lastIndex - 1);
+    return arr;
+}
+
+/**
+ * 快速排序
+ */
+var quickSort = function(arr, low, high){
+    var i = low;
+    var j = high;
+    if (i >= j)
+        return arr;
+    var key = arr[i];
+    while (i < j){
+        while (i < j && arr[j] >= key){
+            j--;
+        }
+        arr[i] = arr[j];
+        while (i < j && arr[i] <= key){
+            i++;
+        }
+        arr[j] = arr[i];
+    }
+    arr[i] = key
+    quickSort(arr, low, i - 1);
+    quickSort(arr, j + 1, high);
+    return arr;
+}
+
+/**
+ * 归并排序
+ */
+var mergeSort = function(arr){
+    if (arr.length <= 1){
+        return arr;
+    }
+    var num = arr.length >> 1;
+    var left = mergeSort(arr.slice(0, num));
+    var right = mergeSort(arr.slice(num, arr.length));
+    return merge(left, right);
+}
+var merge = function(left, right){
+    var l = 0, r = 0;
+    var result = [];
+    while (l < left.length && r < right.length) {
+        if (left[l] < right[r]){
+            result = result.concat(left[l++]);
+        } else {
+            result = result.concat(right[r++]);
+        }
+    }
+    result = result.concat(right.slice(r, right.length));
+    result = result.concat(left.slice(l, left.length));
+    return result;
+}
+
+/**
+ * 希尔排序
+ */
+var shellSort = function(arr){
+    var gap = arr.length >> 1;
+    while (1 <= gap){
+        for(var i = gap; i < arr.length; i++){
+            var tmp = arr[i];
+            for(var j = i - gap; j >= 0 && tmp < arr[j]; j = j - gap){
+                arr[j + gap] = arr[j];
+            }
+            arr[j + gap] = tmp;
+        }
+        gap = gap >> 1;
+    }
+    return arr;
+}
+</script>
