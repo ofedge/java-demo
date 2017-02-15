@@ -36,24 +36,22 @@ public class HeapSort {
      */
     public static void createMaxHeap(int[] data, int lastIndex) {
         for (int i = (lastIndex - 1) >> 1; i >= 0; i--) {  // 从最后一个有叶子的节点开始
-            // 保存当前正在判断的节点
+            // 使用k复制正在判断的节点索引i, 防止i在判断过程中被变化
             int k = i;
             while ((k << 1) + 1 <= lastIndex) {
-                // 使用biggerIndex记录较大的节点, 先使biggerIndex等于左子节点
-                int biggerIndex = (k << 1) + 1;
+                // 使用biggerIndex记录较大的节点索引
+                int biggerIndex = (k << 1) + 1; // 假设左子节点是较大的, 把左子节点索引赋值给biggerIndex
                 if (biggerIndex < lastIndex) {
-                    // 如果右子节点比左子节点大, 则biggerIndex等于右子节点
+                    // 如果右子节点的值比左子节点的值大, 则biggerIndex等于右子节点的索引
                     if (data[biggerIndex] < data[biggerIndex + 1]) {
                         biggerIndex++;
                     }
                 }
-                // 如果当前节点的值小于子节点最大值, 交换两者位置
+                // 循环完成后biggerIndex为两个子节点中值较大的节点的索引, 此时如果当前节点k的值小于biggerIndex节点值, 交换两者位置
                 if (data[k] < data[biggerIndex]) {
                     swap(data, k, biggerIndex);
-                    break;
-                } else {
-                    break;
                 }
+                break;
             }
         }
     }
